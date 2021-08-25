@@ -10,9 +10,11 @@
 const arr = [1, 7, 2, 13]; // 7+13=20
 
 const sumLargestNumbers = (data) => {
-  let x, y; 
-  for (let i = 0; i < data.length; i++){
-      if (i < )
+  for (let i = 0; i < data.length; i++) {
+    //
+    for (let j = 0; j < data.length - 1; j++) {
+      //
+    }
   }
   //use bubble sort!
 };
@@ -20,5 +22,3 @@ const sumLargestNumbers = (data) => {
 // console.log(sumLargestNumbers([1, 10]));
 // console.log(sumLargestNumbers([1, 2, 3]));
 // console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]));
-
-//test push 
