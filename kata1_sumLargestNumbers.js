@@ -8,17 +8,20 @@
 */
 
 const arr = [1, 7, 2, 13]; // 7+13=20
+const arr2 = [1, 5, 2, 25]; // 25+5=30
 
 const sumLargestNumbers = (data) => {
-  for (let i = 0; i < data.length; i++) {
+  const newArr = data.slice();
+  for (let i = 0; i < newArr.length; i++) {
     // inner iteration
-    for (let j = 0; j < data.length; j++) {
-      if (data[j] > data[j + 1]) {
-        //initialise a container
-        let temp = data[j];
-        // switch out element at [j] into temp container
-        data[j] = data[j + 1];
-        data[j + 1] = temp;
+    for (let j = 0; j < newArr.length; j++) {
+      if (newArr[j] > newArr[j + 1]) {
+        // //initialise a container
+        // let temp = data[j];
+        // // switch out element at [j] into temp container
+        // data[j] = data[j + 1];
+        // data[j + 1] = temp;
+        [newArr[j], newArr[j + 1]] = [newArr[j + 1], newArr[j]];
       }
     }
   }
@@ -26,10 +29,10 @@ const sumLargestNumbers = (data) => {
   // console.log(data[data.length - 2]);
 
   // return array
-  return data[data.length - 1] + data[data.length - 2];
+  return newArr[newArr.length - 1] + newArr[newArr.length - 2];
 };
 
-console.log(sumLargestNumbers(arr)); //20
+console.log(sumLargestNumbers(arr2)); //20 //30
 
 console.log(sumLargestNumbers([1, 3, 12, 4])); //16
 
