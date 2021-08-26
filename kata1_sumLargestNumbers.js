@@ -22,14 +22,17 @@ const sumLargestNumbers = (data) => {
       }
     }
   }
+  // console.log(data[data.length - 1]);
+  // console.log(data[data.length - 2]);
+
   // return array
-  return data;
+  return data[data.length - 1] + data[data.length - 2];
 };
 
-console.log(sumLargestNumbers([1, 3, 12, 4]));
+console.log(sumLargestNumbers(arr)); //20
 
-console.log(sumLargestNumbers(arr));
+console.log(sumLargestNumbers([1, 3, 12, 4])); //16
 
-console.log(sumLargestNumbers([1, 10]));
-console.log(sumLargestNumbers([1, 2, 3]));
-console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]));
+console.log(sumLargestNumbers([1, 10])); //11
+console.log(sumLargestNumbers([1, 2, 3])); //5
+console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2])); //126
