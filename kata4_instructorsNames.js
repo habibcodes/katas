@@ -7,9 +7,22 @@
     - if there are 2 equivalent length names, return the first one
 */
 const instructorWithLongestName = function (instructors) {
-  // Put your solution here
+  let count = 0;
+  let obj;
+  // outter loop
+  for (let i = 0; i < instructors.length; i++) {
+    // console.log(instructors[i].name);
+    if (instructors[i].name.length > count) {
+      count = instructors[i].name.length;
+      obj = instructors[i];
+    }
+  }
+  //   console.log(count);
+  //   console.log(obj);
+  return obj;
 };
 
+// test cases
 console.log(
   instructorWithLongestName([
     { name: 'Samuel', course: 'iOS' },
@@ -18,8 +31,9 @@ console.log(
     { name: 'Donald', course: 'Web' },
   ])
 );
+// {name: "Jeremiah", course: "Web"}
 
-// test
+//
 console.log(
   instructorWithLongestName([
     { name: 'Matthew', course: 'Web' },
@@ -28,6 +42,4 @@ console.log(
   ])
 );
 
-// output
-// {name: "Jeremiah", course: "Web"}
 // {name: "Domascus", course: "Web"}
