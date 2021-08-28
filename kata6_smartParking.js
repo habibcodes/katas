@@ -15,7 +15,21 @@
 
 */
 const whereCanIPark = function (spots, vehicle) {
-  // Code here!
+  const indices = [];
+  const el = [];
+  let index = spots.indexOf(el[0]);
+  if (vehicle === 'regular') {
+    el.push('R');
+  } else if (vehicle === 'small') {
+    el.push('R', 'S');
+  } else {
+    el.push('R', 'S', 'M');
+  }
+  while (index != -1) {
+    indices.push(index);
+    index = spots.indexOf(el[0], index + 1);
+  }
+  console.log(indices);
 };
 
 console.log(
@@ -34,6 +48,7 @@ console.log(
   )
 ); //[4, 0]
 
+/*
 console.log(
   whereCanIPark(
     [
@@ -59,3 +74,4 @@ console.log(
     'motorcycle'
   )
 ); //[3,1]
+*/
