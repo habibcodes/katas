@@ -14,41 +14,99 @@
     - no spots must return false
 
 */
+// const whereCanIPark = function (spots, vehicle) {
+//   const indices = [];
+//   const el = [];
+//   let index = spots.indexOf(el[0]);
+//   if (vehicle === 'regular') {
+//     el.push('R');
+//   } else if (vehicle === 'small') {
+//     el.push('R', 'S');
+//   } else {
+//     el.push('R', 'S', 'M');
+//   }
+//   while (index != -1) {
+//     indices.push(index);
+//     index = spots.indexOf(el[0], index + 1);
+//   }
+//   console.log(indices);
+// };
+
+// console.log(
+//   whereCanIPark(
+//     [
+//       // COLUMNS ARE X
+//       // 0    1    2    3    4    5
+//       ['s', 's', 's', 'S', 'R', 'M'], // 0 ROWS ARE Y
+//       ['s', 'M', 's', 'S', 'r', 'M'], // 1
+//       ['s', 'M', 's', 'S', 'r', 'm'], // 2
+//       ['S', 'r', 's', 'm', 'r', 'M'], // 3
+//       ['S', 'r', 's', 'm', 'r', 'M'], // 4
+//       ['S', 'r', 'S', 'M', 'M', 'S'], // 5
+//     ],
+//     'regular'
+//   )
+// ); //[4, 0]
+
 const whereCanIPark = function (spots, vehicle) {
-  const indices = [];
-  const el = [];
-  let index = spots.indexOf(el[0]);
-  if (vehicle === 'regular') {
-    el.push('R');
-  } else if (vehicle === 'small') {
-    el.push('R', 'S');
-  } else {
-    el.push('R', 'S', 'M');
+  let spotType = [];
+
+  // section for filtering what spots to look for
+
+  // create array of vehicle elements to search the input
+  // spots array against; worry about coordinates later
+
+  const vehicleType = (vehicle) => {
+    // reset value of spotType arr
+    spotType = [];
+    return vehicle === 'regular'
+      ? spotType.push('R')
+      : vehicle === 'small'
+      ? spotType.push('R', 'S')
+      : spotType.push('R', 'S', 'M');
+  };
+  // call vehicleType to set the spotType array
+  vehicleType(vehicle);
+
+  //   console.log(vehicleType('small'));
+  console.log(spotType);
+  //-----------------------------------//
+
+  // now search spots array against spotType; if it returns
+  // True, then log the co-ordinates
+
+  //   const isFound = (spots, spotType) => {
+  //     // return true if spotType el is inside spots
+  //     if (spotType.some((type) => spots.includes(type))) {
+  //       //
+  //       console.log('it worked');
+  //     }
+  //   };
+
+  // section for finding specific spots //
+  // loop over entire array
+  for (let i = 0; i < spots.length; i++) {
+    // loop over subarray elements
+    // console.log('Rows of park spots are Row#: ' + [i] + '--' + spots[i]);
+    for (let j = 0; j < spots[i].length; j++) {
+      //
+      //   console.log(
+      //     'Column for each spot is Column#: ' + [j] + '--' + spots[i][j]
+      //   );
+
+      if (spots[i][j] === spotType[0]) {
+        console.log('spot found!!!!');
+      } else if (spots[i][j] === spotType[1]) {
+        console.log('spot found!!!!');
+      } else if (spots[i][j] === spotType[2]) {
+        console.log('spot found!!!!');
+      } else {
+        return false;
+      }
+    }
   }
-  while (index != -1) {
-    indices.push(index);
-    index = spots.indexOf(el[0], index + 1);
-  }
-  console.log(indices);
 };
 
-console.log(
-  whereCanIPark(
-    [
-      // COLUMNS ARE X
-      // 0    1    2    3    4    5
-      ['s', 's', 's', 'S', 'R', 'M'], // 0 ROWS ARE Y
-      ['s', 'M', 's', 'S', 'r', 'M'], // 1
-      ['s', 'M', 's', 'S', 'r', 'm'], // 2
-      ['S', 'r', 's', 'm', 'r', 'M'], // 3
-      ['S', 'r', 's', 'm', 'r', 'M'], // 4
-      ['S', 'r', 'S', 'M', 'M', 'S'], // 5
-    ],
-    'regular'
-  )
-); //[4, 0]
-
-/*
 console.log(
   whereCanIPark(
     [
@@ -60,7 +118,9 @@ console.log(
     'small'
   )
 ); //false
+/*
 
+*/
 console.log(
   whereCanIPark(
     [
@@ -74,4 +134,3 @@ console.log(
     'motorcycle'
   )
 ); //[3,1]
-*/
