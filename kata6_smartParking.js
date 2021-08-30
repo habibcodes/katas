@@ -94,15 +94,24 @@ const whereCanIPark = function (spots, vehicle) {
       //     'Column for each spot is Column#: ' + [j] + '--' + spots[i][j]
       //   );
 
-      if (spots[i][j] === spotType[0]) {
-        console.log('spot found!!!!');
-      } else if (spots[i][j] === spotType[1]) {
-        console.log('spot found!!!!');
-      } else if (spots[i][j] === spotType[2]) {
-        console.log('spot found!!!!');
-      } else {
-        return false;
-      }
+      //   console.log(spotType.includes(spots[i][j]));
+
+      let found = spotType.includes(spots[i][j]);
+
+      console.log(
+        'Is there a spot in parking spot in ' + [i],
+        [j] + 'for a ' + spots[i][j] + ' vehicle? ' + found
+      );
+
+      //   if (spotType.includes(spots[i][j])) {
+      //     console.log('spot found!!!!');
+      //   } else if (spotType.includes(spots[i][j])) {
+      //     console.log('spot found!!!!');
+      //   } else if (spotType.includes(spots[i][j])) {
+      //     console.log('spot found!!!!');
+      //   } else {
+      //     return false;
+      //   }
     }
   }
 };
