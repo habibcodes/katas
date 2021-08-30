@@ -14,39 +14,6 @@
     - no spots must return false
 
 */
-// const whereCanIPark = function (spots, vehicle) {
-//   const indices = [];
-//   const el = [];
-//   let index = spots.indexOf(el[0]);
-//   if (vehicle === 'regular') {
-//     el.push('R');
-//   } else if (vehicle === 'small') {
-//     el.push('R', 'S');
-//   } else {
-//     el.push('R', 'S', 'M');
-//   }
-//   while (index != -1) {
-//     indices.push(index);
-//     index = spots.indexOf(el[0], index + 1);
-//   }
-//   console.log(indices);
-// };
-
-// console.log(
-//   whereCanIPark(
-//     [
-//       // COLUMNS ARE X
-//       // 0    1    2    3    4    5
-//       ['s', 's', 's', 'S', 'R', 'M'], // 0 ROWS ARE Y
-//       ['s', 'M', 's', 'S', 'r', 'M'], // 1
-//       ['s', 'M', 's', 'S', 'r', 'm'], // 2
-//       ['S', 'r', 's', 'm', 'r', 'M'], // 3
-//       ['S', 'r', 's', 'm', 'r', 'M'], // 4
-//       ['S', 'r', 'S', 'M', 'M', 'S'], // 5
-//     ],
-//     'regular'
-//   )
-// ); //[4, 0]
 
 const whereCanIPark = function (spots, vehicle) {
   let spotType = [];
@@ -55,7 +22,6 @@ const whereCanIPark = function (spots, vehicle) {
 
   // create array of vehicle elements to search the input
   // spots array against; worry about coordinates later
-
   const vehicleType = (vehicle) => {
     // reset value of spotType arr
     spotType = [];
@@ -68,53 +34,61 @@ const whereCanIPark = function (spots, vehicle) {
   // call vehicleType to set the spotType array
   vehicleType(vehicle);
 
-  //   console.log(vehicleType('small'));
-  console.log(spotType);
+  //   console.log(spotType);
   //-----------------------------------//
-
-  // now search spots array against spotType; if it returns
-  // True, then log the co-ordinates
-
-  //   const isFound = (spots, spotType) => {
-  //     // return true if spotType el is inside spots
-  //     if (spotType.some((type) => spots.includes(type))) {
-  //       //
-  //       console.log('it worked');
-  //     }
-  //   };
 
   // section for finding specific spots //
   // loop over entire array
   for (let i = 0; i < spots.length; i++) {
     // loop over subarray elements
-    // console.log('Rows of park spots are Row#: ' + [i] + '--' + spots[i]);
     for (let j = 0; j < spots[i].length; j++) {
-      //
-      //   console.log(
-      //     'Column for each spot is Column#: ' + [j] + '--' + spots[i][j]
-      //   );
-
-      //   console.log(spotType.includes(spots[i][j]));
-
-      let found = spotType.includes(spots[i][j]);
-
-      console.log(
-        'Is there a spot in parking spot in ' + [i],
-        [j] + 'for a ' + spots[i][j] + ' vehicle? ' + found
-      );
-
+      // check to see if vehicle spot type is in arr
+      //   let found = ;
+      // if it is, print coordinates; else return false
       //   if (spotType.includes(spots[i][j])) {
-      //     console.log('spot found!!!!');
-      //   } else if (spotType.includes(spots[i][j])) {
-      //     console.log('spot found!!!!');
-      //   } else if (spotType.includes(spots[i][j])) {
-      //     console.log('spot found!!!!');
+      //     return `Spot found at ${[j]},${[i]}`;
       //   } else {
       //     return false;
       //   }
+
+      if (!spotType.includes(spots[i][j])) {
+        if (j === spots[i].length) {
+          return false;
+        } else {
+          return `Spot found at ${[j]},${[i]}`;
+        }
+      }
+      // maybe try an if inside an if where condition
+      // requires that loops until spotType array length is met?
+      if (spotType.includes(spots[i][j])) {
+      }
+
+      //   found ? `Spot found at ${[j]},${[i]}` : false;
+
+      // *** this returns every instance of available spots
+      //   console.log(
+      //     'Is there a spot in parking spot in ' + [j],
+      //     [i] + ' for a ' + spots[i][j] + ' vehicle? ' + found
+      //   );
     }
   }
 };
+
+console.log(
+  whereCanIPark(
+    [
+      // COLUMNS ARE X
+      // 0    1    2    3    4    5
+      ['s', 's', 's', 'S', 'R', 'M'], // 0 ROWS ARE Y
+      ['s', 'M', 's', 'S', 'r', 'M'], // 1
+      ['s', 'M', 's', 'S', 'r', 'm'], // 2
+      ['S', 'r', 's', 'm', 'r', 'M'], // 3
+      ['S', 'r', 's', 'm', 'r', 'M'], // 4
+      ['S', 'r', 'S', 'M', 'M', 'S'], // 5
+    ],
+    'regular'
+  )
+); //[4, 0]
 
 console.log(
   whereCanIPark(
@@ -127,9 +101,7 @@ console.log(
     'small'
   )
 ); //false
-/*
 
-*/
 console.log(
   whereCanIPark(
     [
