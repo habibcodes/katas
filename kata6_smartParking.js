@@ -17,14 +17,11 @@
 
 const whereCanIPark = function (spots, vehicle) {
   let spotType = [];
-
   // section for filtering what spots to look for
-
-  // create array of vehicle elements to search the input
-  // spots array against; worry about coordinates later
   const vehicleType = (vehicle) => {
     // reset value of spotType arr
     spotType = [];
+    // create reference arr to compare against
     return vehicle === 'regular'
       ? spotType.push('R')
       : vehicle === 'small'
@@ -34,44 +31,31 @@ const whereCanIPark = function (spots, vehicle) {
   // call vehicleType to set the spotType array
   vehicleType(vehicle);
 
-  //   console.log(spotType);
   //-----------------------------------//
 
   // section for finding specific spots //
-  // loop over entire array
   for (let i = 0; i < spots.length; i++) {
-    // loop over subarray elements
+    // loop over every element
     for (let j = 0; j < spots[i].length; j++) {
-      // check to see if vehicle spot type is in arr
-      //   let found = ;
-      // if it is, print coordinates; else return false
-      //   if (spotType.includes(spots[i][j])) {
-      //     return `Spot found at ${[j]},${[i]}`;
-      //   } else {
-      //     return false;
-      //   }
-
+      //   if key not in spotType legend, continue
       if (!spotType.includes(spots[i][j])) {
-        if (j === spots[i].length) {
-          return false;
-        } else {
-          return `Spot found at ${[j]},${[i]}`;
-        }
-      }
-      // maybe try an if inside an if where condition
-      // requires that loops until spotType array length is met?
-      if (spotType.includes(spots[i][j])) {
+        continue;
+        // else return first coordinate where it is found
+      } else {
+        // return `Spot found at ${[j]},${[i]}`;
+        return [j, i];
       }
 
-      //   found ? `Spot found at ${[j]},${[i]}` : false;
-
-      // *** this returns every instance of available spots
-      //   console.log(
-      //     'Is there a spot in parking spot in ' + [j],
-      //     [i] + ' for a ' + spots[i][j] + ' vehicle? ' + found
-      //   );
+      /* --> shows every instance of available spots
+      let found = spotType.includes(spots[i][j]) ? 'Yes' : 'No';
+      console.log(
+        `Is there a spot in parking spot ${j},${i} for an "${spots[i][j]}" vehicle?: ${found}`
+      );
+      */
     }
   }
+  // return false if key spots[i][j] not found in spotType legend
+  return false;
 };
 
 console.log(
