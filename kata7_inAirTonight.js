@@ -15,23 +15,37 @@
 
 const checkAir = function (samples, threshold) {
   // count arr.length; hold in var
+  let dirty = 0;
+  let clean = 0;
   // count total number of 'clean'/'dirty'; hold in clean/dirty quantity vars
-  // if cleanQuant/arr.length < threshold, log 'Clean', else, 'Polluted'
+  for (let sample of samples) {
+    sample === 'dirty' ? (dirty += 1) : (clean += 1);
+  }
+
+  // if !cleanQuant/arr.length < threshold, log 'Clean', else, 'Polluted'
+  return dirty / samples.length >= threshold ? 'Polluted' : 'Clean';
 };
 
-/*
-  console.log(checkAir(
-    ['clean', 'clean', 'dirty', 'clean', 'dirty', 'clean', 'clean', 'dirty', 'clean', 'dirty'],
+console.log(
+  checkAir(
+    [
+      'clean',
+      'clean',
+      'dirty',
+      'clean',
+      'dirty',
+      'clean',
+      'clean',
+      'dirty',
+      'clean',
+      'dirty',
+    ],
     0.3
-  )); // Polluted
-  
-  console.log(checkAir(
-    ['dirty', 'dirty', 'dirty', 'dirty', 'clean'],
-    0.25
-  )); // Polluted
-  
-  console.log(checkAir(
-    ['clean', 'dirty', 'clean', 'dirty', 'clean', 'dirty', 'clean'],
-    0.9
-  )); // Clean
-  */
+  )
+); // Polluted
+
+console.log(checkAir(['dirty', 'dirty', 'dirty', 'dirty', 'clean'], 0.25)); // Polluted
+
+console.log(
+  checkAir(['clean', 'dirty', 'clean', 'dirty', 'clean', 'dirty', 'clean'], 0.9)
+); // Clean
