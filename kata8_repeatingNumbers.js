@@ -8,34 +8,19 @@
 
 */
 const repeatNumbers = function (data) {
-  // create 2d arr loop
-  // the inner loop should print the arr[i][0] digit arr[i][1] times
-  // return template literal string?
-  let num;
-  let repeat;
-
+  let arr = [];
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < data[i].length - 1; j++) {
-      // extract int from first index of arr and save it to var
-      // change the int to a string using toString(); save it to var
-      num = data[i][j].toString();
-      // extract int at second index of arr and save it to var
-      // return var1.repeat(var2) times
-
-      //   console.log(num);
-      //   console.log(typeof num);
-
-      repeat = num.repeat(data[i][1]);
-
-      //   repeat = data[i][1];
-      //   console.log(repeat);
-
-      //   repeated = num.repeat(10);
-
-      //   console.log(repeated);
-      return repeat;
+      // extract first index number and make into string
+      let numStr = data[i][0].toString();
+      // extract second index number and pass into .repeat() as # of repeats
+      let repeatingNums = numStr.repeat(data[i][1]);
+      // push into arr so join() can be used on it
+      arr.push(' ' + repeatingNums);
+      arr.join();
     }
   }
+  return arr.toString();
 };
 
 console.log(repeatNumbers([[1, 10]])); // 1111111111
