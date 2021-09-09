@@ -7,8 +7,17 @@
 
 const multiplicationTable = function (maxValue) {
   // Your code here
+  // multiply every number in range maxValue
+
+  for (let i = 1; i <= maxValue; i++) {
+    console.log('outer loop: ' + i);
+    for (let j = 1; j <= maxValue; j++) {
+      console.log('inner loop: ' + j);
+      //   return i * j;
+    }
+  }
 };
 
-console.log(multiplicationTable(1));
+// console.log(multiplicationTable(1));
 console.log(multiplicationTable(5));
-console.log(multiplicationTable(10));
+// console.log(multiplicationTable(10));
