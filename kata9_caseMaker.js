@@ -7,11 +7,11 @@
     - similar to 'percentEncoded' --> use trim()/split()/join()
 */
 const camelCase = function (input) {
-  // use method that removes white space and capitalises first letter after each whitespace
+  return input.replace(/\W+(.)/g, function (match, chr) {
+    return chr.toUpperCase();
+  });
 };
 
-/*
-  console.log(camelCase("this is a string"));
-  console.log(camelCase("loopy lighthouse"));
-  console.log(camelCase("supercalifragalisticexpialidocious"));
-  */
+console.log(camelCase('this is a string'));
+console.log(camelCase('loopy lighthouse'));
+console.log(camelCase('supercalifragalisticexpialidocious'));
