@@ -10,10 +10,10 @@ const multiplicationTable = function (maxValue) {
   // multiply every number in range maxValue
 
   for (let i = 1; i <= maxValue; i++) {
-    console.log('outer loop: ' + i);
+    // console.log('outer loop: ' + i);
     for (let j = 1; j <= maxValue; j++) {
-      console.log('inner loop: ' + j);
-      //   return i * j;
+      // console.log('inner loop: ' + j);
+      console.log(i * j);
     }
   }
 };
